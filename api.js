@@ -1,6 +1,14 @@
 const fs = require('fs');
 
 var API = {
+    getIsAdmin(req, res) {
+        var user = JSON.parse(fs.readFileSync(`${__dirname}/database/users/${req.params.id}/user.json`, 'utf-8')).user;
+
+        res.json({
+            admin: user.admin
+        });
+    },
+
     getUsername(req, res) {
         var user = JSON.parse(fs.readFileSync(`${__dirname}/database/users/${req.params.id}/user.json`, 'utf-8')).user;
 
@@ -31,5 +39,6 @@ var API = {
 module.exports = {
     getFriends: API.getFriends,
     getUsername: API.getUsername,
-    getJoinDate: API.getJoinDate
+    getJoinDate: API.getJoinDate,
+    getIsAdmin: API.getIsAdmin
 };

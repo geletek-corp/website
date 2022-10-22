@@ -53,6 +53,7 @@ var reg = {
 
             var user = {
                 id: id,
+                admin: false,
                 username: username,
                 email: email,
                 password: hash.sha256base64(password),

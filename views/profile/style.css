@@ -126,3 +126,10 @@ body {
     padding-bottom: 5px;
     top: 160px;
 }
+
+#is-admin {
+    margin-left: 10px;
+    margin-top: 64px;
+    color: #00aaff;
+    text-decoration: bold;
+}

@@ -38,6 +38,7 @@ app.post('/reg/auth', reg.auth);
 app.get('/api/get/friends/:id', api.getFriends);
 app.get('/api/get/username/:id', api.getUsername);
 app.get('/api/get/join-date/:id', api.getJoinDate);
+app.get('/api/get/is-admin/:id', api.getIsAdmin);
 
 app.get('/profile/:id', profile.page);
 

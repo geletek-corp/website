@@ -52,6 +52,10 @@
                 var joinDate = JSON.parse(GETRequest(`/api/get/join-date/${id}`));
 
                 profileBox.innerHTML += `<img src="/avatar/${id}" width="150" height="150"><h2>${JSON.parse(GETRequest(`/api/get/username/${id}`)).username}</h2><div class="join-date"><h4>Katıldığı Tarih:</h4>${joinDate.joinDay}/${joinDate.joinMonth}/${joinDate.joinYear}</div>`;
+
+                if (JSON.parse(GETRequest(`/api/get/is-admin/${id}`)).admin) {
+                    profileBox.innerHTML += `<h3 id="is-admin">ADMIN</h3>`;
+                }
             </script>
         </div>
     </body>
