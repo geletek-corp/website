@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Giriş Yap - Geletek</title>
+        <link rel="stylesheet" href="/cdn/views/log/style.css">
+    </head>
+    <body>
+        <form class="form-box" action="/log/auth" method="POST">
+            <h2>Giriş Yap</h2>
+            <div id="up-input">E-Posta Adresi:</div>
+            <input type="email" name="email">
+            <div id="up-input">Şifre:</div>
+            <input type="password" name="password">
+            <input type="submit" value="Giriş Yap">
+            <div class="already-container">
+                <div>Hesabın yok mu?</div>
+                <a href="/register">Hesap Oluştur</a>
+            </div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Geletek</title>
+        <link rel="stylesheet" href="/cdn/views/main/style.css">
+    </head>
+    <body>
+        <div class="top-box">
+            <a id="logo" href="/"><h1>Geletek</h1></a>
+        <% if (id == null) { -%>
+            <div class="log-reg">
+                <a href="/login">Giriş Yap</a>
+                <a href="/register">Hesap Oluştur</a>
+            </div>
+        <% } else { -%>
+            <a href="/profile/<%= id %>"><img id="top-avatar" src="/avatar/<%= id %>" width="50" height="50"></a>
+            <script>
+                window.GLOBAL_ENV = {
+                    ID: "<%= id %>"
+                };
+            </script>
+        <% } -%>
+        </div>
+        <div class="left-box">
+            <h2>Arkadaşlar</h2>
+            <script>
+                function GETRequest(url) {
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open('GET', url, false);
+                    xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xmlHttp.send(null);
+                    return xmlHttp.responseText;
+                }
+
+                var friends = JSON.parse(GETRequest(`/api/get/friends/<%= id %>`)).friends;
+
+                console.log(friends);
+
+                for (i in friends) {
+                    document.querySelector('.left-box').innerHTML += `<a href="/profile/${friends[i]}"><div class="left-user"><img src="/avatar/${friends[i]}" width="50" height="50"><div id="username">${JSON.parse(GETRequest(`/api/get/username/${friends[i]}`)).username}</div></div></a>`;
+                }
+            </script>
+        </div>
+        <% if (id != null) { -%>
+            <div class="welcome-box">
+                <img src="/avatar/<%= id %>" width="150" height="150">
+                <script>
+                    document.querySelector('.welcome-box').innerHTML += `<h2>Hoşgeldin ${JSON.parse(GETRequest(`/api/get/username/<%= id %>`)).username}</h2>`;
+                </script>
+            </div>
+        <% } else { -%>
+        <% } -%>
+        <div class="news">
+            <h2>Haberler</h2>
+            <div class="new">
+                <img src="/cdn/news/place-advanced/picture1.jpg" width="500" height="300">
+                <h3>Yeni Oyun: Place Advanced!</h3>
+                <h4>Geletek Büyük Etkinliğinde...</h4>
+            </div>
+            <div class="new">
+                <img src="/cdn/logo.png" width="300" height="300">
+                <h3>Geletek Site Açılışı</h3>
+                <h4>Geletek Büyük Etkinliğinde...</h4>
+            </div>
+            <div class="new">
+                <img src="/cdn/logo.png" width="300" height="300">
+                <h3>Geletek Büyük Etkinliğine Kalan Süre</h3>
+                <h4><a href="https://bigevent.geletek.repl.co">Tıkla!</a></h4>
+            </div>
+        </div>
+    </body>
+</html>

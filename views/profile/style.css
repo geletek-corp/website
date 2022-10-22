@@ -1,0 +1,128 @@
+body {
+    background-color: #101010;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: sans-serif;
+}
+
+.top-box {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 75px;
+    background-color: #252525;
+}
+
+#logo {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.left-box {
+    position: fixed;
+    top: 75px;
+    width: 210px;
+    height: 100%;
+    background-color: #202020;
+    text-align: center;
+    overflow-y: scroll;
+}
+
+.left-box::-webkit-scrollbar {
+    width: 10px;
+    color: white;
+}
+
+.left-box::-webkit-scrollbar-thumb {
+    width: 10px;
+    border-radius: 5px;
+    color: darkgrey;
+}
+
+.left-box::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: black;
+}
+
+.left-user {
+    display: flex;
+    width: 190px;
+    height: 60px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.left-box a {
+    text-decoration: none;
+    color: white;
+}
+
+.left-user img {
+    margin-top: 5px;
+    border-radius: 50%;
+}
+
+.left-user #username {
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 17px;
+}
+
+.left-user:hover {
+    background-color: #303030;
+    cursor: pointer;
+}
+
+.log-reg {
+    position: absolute;
+    right: 10px;
+    top: 27px;
+}
+
+.log-reg a {
+    background-color: #00aaff;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.log-reg a:hover {
+    background-color: #0088ff;
+}
+
+#top-avatar {
+    position: absolute;
+    border-radius: 50%;
+    right: 10px;
+    top: 13px;
+}
+
+.profile-box {
+    display: flex;
+    position: absolute;
+    width: 750px;
+    height: 400px;
+    background-color: #151515;
+    margin-left: 300px;
+    top: 150px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.profile-box img {
+    border-radius: 50%;
+}
+
+.profile-box h2 {
+    margin-left: 20px;
+    margin-top: 60px;
+}
+
+.profile-box .join-date {
+    position: absolute;
+    padding-bottom: 5px;
+    top: 160px;
+}

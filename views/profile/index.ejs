@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Geletek</title>
+        <link rel="stylesheet" href="/cdn/views/profile/style.css">
+    </head>
+    <body>
+        <div class="top-box">
+            <a id="logo" href="/"><h1>Geletek</h1></a>
+        <% if (id == null) { -%>
+            <div class="log-reg">
+                <a href="/login">Giriş Yap</a>
+                <a href="/register">Hesap Oluştur</a>
+            </div>
+        <% } else { -%>
+            <a href="/profile/<%= id %>"><img id="top-avatar" src="/avatar/<%= id %>" width="50" height="50"></a>
+            <script>
+                window.GLOBAL_ENV = {
+                    ID: "<%= id %>"
+                };
+            </script>
+        <% } -%>
+        </div>
+        <div class="left-box">
+            <h2>Arkadaşlar</h2>
+            <script>
+                function GETRequest(url) {
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open('GET', url, false);
+                    xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xmlHttp.send(null);
+                    return xmlHttp.responseText;
+                }
+
+                var friends = JSON.parse(GETRequest(`/api/get/friends/<%= id %>`)).friends;
+
+                console.log(friends);
+
+                for (i in friends) {
+                    document.querySelector('.left-box').innerHTML += `<a href="/profile/${friends[i]}"><div class="left-user"><img src="/avatar/${friends[i]}" width="50" height="50"><div id="username">${JSON.parse(GETRequest(`/api/get/username/${friends[i]}`)).username}</div></div></a>`;
+                }
+            </script>
+        </div>
+        <div class="profile-box">
+            <script>
+                const profileBox = document.querySelector('.profile-box');
+
+                var path = window.location.pathname.split('/');
+                var id = path[path.length - 1];
+
+                var joinDate = JSON.parse(GETRequest(`/api/get/join-date/${id}`));
+
+                profileBox.innerHTML += `<img src="/avatar/${id}" width="150" height="150"><h2>${JSON.parse(GETRequest(`/api/get/username/${id}`)).username}</h2><div class="join-date"><h4>Katıldığı Tarih:</h4>${joinDate.joinDay}/${joinDate.joinMonth}/${joinDate.joinYear}</div>`;
+            </script>
+        </div>
+    </body>
+</html>

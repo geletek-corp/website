@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hesap Oluştur - Geletek</title>
+        <link rel="stylesheet" href="/cdn/views/reg/style.css">
+    </head>
+    <body>
+        <form class="form-box" action="/reg/auth" method="POST">
+            <h2>Hesap Oluştur</h2>
+            <div id="up-input">Kullanıcı Adı:</div>
+            <input type="text" name="username">
+            <div id="up-input">E-Posta adresi:</div>
+            <input type="email" name="email">
+            <div id="up-input">Şifre:</div>
+            <input type="password" name="password">
+            <input type="submit" value="Hesap Oluştur">
+            <div class="already-container">
+                <div>Zaten hesabın var mı?</div>
+                <a href="/login">Giriş Yap</a>
+            </div>
+        </form>
+    </body>
+</html>
